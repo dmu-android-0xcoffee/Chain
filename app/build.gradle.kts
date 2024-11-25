@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "net.wh64.chain"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "net.wh64.chain"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
