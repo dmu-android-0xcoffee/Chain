@@ -1,38 +1,22 @@
 package net.wh64.chain
 
-import android.graphics.drawable.Icon
 import android.os.Bundle
-import android.text.Layout
-import android.webkit.WebSettings.TextSize
-import android.widget.Button
-import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.*
-import androidx.compose.material3.*
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.R
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Color.Companion.LightGray
-import androidx.compose.ui.graphics.vector.VectorComposable
-import androidx.compose.ui.input.key.Key.Companion.Button1
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontVariation.width
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-import net.wh64.chain.R.drawable
+import androidx.compose.ui.unit.sp
 import net.wh64.chain.ui.theme.ChainTheme
 
 class MainActivity : ComponentActivity() {
@@ -45,8 +29,12 @@ class MainActivity : ComponentActivity() {
                     bottomBar = {},
                     modifier = Modifier.fillMaxSize()) { innerPadding ->
                     textBox()
-                    Button()
-                    button1()
+                    LoginButton()
+                    LoginButton2()
+                    LoginButton3()
+                    LoginButton4()
+                    LoginButton5()
+                    LoginScreen()
                 }
             }
         }
@@ -56,82 +44,173 @@ class MainActivity : ComponentActivity() {
 private fun textBox() {
     Box(
         modifier = Modifier
-            .width(600.dp)
-            .height(250.dp)
+            .fillMaxWidth()
+            .padding(top=50.dp)
+            .padding(80.dp)
     ) {
         Box(
             modifier = Modifier
-                .fillMaxSize(0.5f)
-                .height(100.dp)
+                .size(250.dp, 130.dp)
                 .background(Color.DarkGray)
         )
-        Text(text = "LOGO")
+        Text(text = "LOGO",
+            style = TextStyle(
+                fontSize = 30.sp,
+                fontWeight = FontWeight.Bold,
+                color = Color.Black,
+            ),
+            modifier = Modifier.align(Alignment.Center)
+        )
     }
 }
 @Composable
-private fun button1() {
-    Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
-        Column(Modifier
-            .fillMaxWidth()
-            .height(100.dp)
-            .width(300.dp)
-            .weight(1f)){
-            Button(onClick = {}, modifier = Modifier.wrapContentSize()) {
-                Icon(
-                    Icons.Rounded.AccountBox,
-                    contentDescription = stringResource(drawable.id)
-                )
-                Text("          아이디를 입력해주세요           ")
-            }
-        }
-        Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Center) {
-            Column(Modifier
-                .fillMaxWidth()
-                .height(100.dp)
-                .width(400.dp)
-                .weight(1f)){
-                Button(onClick = {}, modifier = Modifier.wrapContentSize()) {
-                    Icon(
-                        Icons.Rounded.Email,
-                        contentDescription = stringResource(drawable.passwd)
-                    )
-                    Text( "          비밀번호를 입력해주세요       ",)
+private fun LoginButton() {
+    TextButton(onClick = {}, modifier = Modifier.wrapContentSize()) {
+        Text(text = "이메일을 입력하세요")
+    }
+}
+
+@Composable
+private fun LoginButton2() {
+    TextButton(onClick = {}, modifier = Modifier.wrapContentSize()) {
+        Text(text = "아이디를 입력하세요")
+    }
+}
+
+@Composable
+private fun LoginButton3() {
+    TextButton(onClick = {}, modifier = Modifier.wrapContentSize()) {
+        Text(text = "비밀번호를 입력하세요")
+    }
+}
+@Composable
+private fun LoginButton4() {
+    TextButton(onClick = {}, modifier = Modifier.wrapContentSize()) {
+        Text(text = "비밀번호를 다시 입력해 주세요")
+    }
+}
+@Composable
+private fun LoginButton5() {
+    TextButton(onClick = {}, modifier = Modifier.wrapContentSize()) {
+        Text(text = "Register Complete")
+    }
+}
+
+@Composable
+private fun LoginScreen(){
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .wrapContentSize(Alignment.Center)
+        .padding(20.dp)
+    ) {
+        LoginButton()
+        Spacer(modifier = Modifier.height(20.dp))
+        LoginButton2()
+        Spacer(modifier = Modifier.height(20.dp))
+        LoginButton3()
+        Spacer(modifier = Modifier.height(20.dp))
+        LoginButton4()
+        Spacer(modifier = Modifier.height(20.dp))
+        LoginButton5()
+        Spacer(modifier = Modifier.height(20.dp))
+    }
+}
+class SecondActivty : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            ChainTheme {
+                Scaffold(
+                    bottomBar = {},
+                    modifier = Modifier.fillMaxSize()
+                ) { innerPadding ->
+                    LogoBox()
+                    LoginButton6()
+                    LoginButton7()
+                    LoginButton8()
+                    LoginButton9()
+                    LoginScreen2()
+                    LoginScreen3()
                 }
             }
         }
     }
 }
 @Composable
-private fun Button(){
-    Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Bottom) {
-        Column(Modifier
+fun LogoBox() {
+    Box(
+        modifier = Modifier
             .fillMaxWidth()
-            .height(100.dp)
-            .width(200.dp)
-            .weight(1f)) {}
-        Button(onClick = {}, modifier = Modifier.wrapContentSize()) {
-            Icon(
-                Icons.Rounded.AccountCircle,
-                contentDescription = stringResource(drawable.login)
-            )
-            Text("Login")
-        }
-        }
-
-
-    Column(horizontalAlignment = Alignment.CenterHorizontally, verticalArrangement = Arrangement.Bottom) {
-        Column(Modifier
-            .fillMaxWidth()
-            .height(100.dp)
-            .width(200.dp)
-            .weight(1f)) {}
-    Button(onClick = {}, modifier = Modifier.wrapContentSize()) {
-        Icon(
-            Icons.Rounded.Edit,
-            contentDescription = stringResource(drawable.register)
+            .padding(top = 50.dp)
+            .background(Color.LightGray)
+    ) {
+        Box(
+            modifier = Modifier
+                .size(250.dp, 130.dp)
+                .align(Alignment.Center)
         )
-        Text("Register")
+        {
+            Text(
+                text = "LOGO",
+                style = TextStyle(
+                    fontSize = 30.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black
+                ),
+                modifier = Modifier.align(Alignment.Center)
+            )
+        }
     }
+}
+@Composable
+private fun LoginButton6() {
+    TextButton(onClick = {}, modifier = Modifier.wrapContentSize()) {
+        Text(text = "아이디를 입력하세요")
     }
 }
 
+@Composable
+private fun LoginButton7() {
+    TextButton(onClick = {}, modifier = Modifier.wrapContentSize()) {
+        Text(text = "비밀번호를 입력하세요")
+    }
+}
+@Composable
+private fun LoginButton8() {
+    TextButton(onClick = {}, modifier = Modifier.wrapContentSize()) {
+        Text(text="Login")
+    }
+}
+@Composable
+private fun LoginButton9() {
+    TextButton(onClick = {}, modifier = Modifier.wrapContentSize()) {
+        Text(text="Register")
+    }
+}
+@Composable
+private fun LoginScreen2(){
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .wrapContentSize(Alignment.Center)
+        .padding(20.dp)
+    ){
+        LoginButton6()
+        Spacer(modifier = Modifier.height(20.dp))
+        LoginButton7()
+        Spacer(modifier = Modifier.height(20.dp))
+    }
+}
+@Composable
+private fun LoginScreen3(){
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .padding(20.dp),
+        verticalArrangement = Arrangement.Bottom,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ){
+        LoginButton8()
+        Spacer(modifier = Modifier.height(20.dp))
+        LoginButton9()
+        Spacer(modifier = Modifier.height(20.dp))
+    }
+}

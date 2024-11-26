@@ -23,6 +23,16 @@
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
 		</activity>
+		<activity android:name=".SecondActivty"
+				  android:exported="true"
+				  android:label="register"
+				  android:theme="@style/Theme.Chain">
+			<intent-filter>
+				<action android:name="android.intent.action.SECEND"/>
+
+				<action android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+		</activity>
 	</application>
 
 </manifest>
