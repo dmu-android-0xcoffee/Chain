@@ -33,6 +33,15 @@
 				<action android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
 		</activity>
+		<activity android:name=".ThirdActivty"
+				  android:exported="true"
+				  android:label="Thrid"
+				  android:theme="@style/Theme.Chain">
+			<intent-filter>
+				<action android:name="android.intent.action.THRID"/>
+				<action android:name="android.intent.category.LUNCHER"/>
+			</intent-filter>
+		</activity>
 	</application>
 
 </manifest>

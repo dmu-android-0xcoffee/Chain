@@ -214,3 +214,23 @@ private fun LoginScreen3(){
         Spacer(modifier = Modifier.height(20.dp))
     }
 }
+class ThirdActivty : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        enableEdgeToEdge()
+        setContent{
+            ChainTheme {
+                Scaffold(
+                    bottomBar = {},
+                    modifier = Modifier.fillMaxSize()){
+                    innerPadding->
+                    DirectMessage()
+                }
+            }
+        }
+    }
+}
+@Composable
+private fun DirectMessage(){
+
+}
