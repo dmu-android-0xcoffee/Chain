@@ -227,10 +227,32 @@ class ThirdActivty : ComponentActivity() {
                     DirectMessage()
                 }
             }
+
         }
     }
 }
 @Composable
-private fun DirectMessage(){
-
-}
+private fun DirectMessage()
+{
+    Box {
+            Box(
+                modifier = Modifier
+                    .size(420.dp, 150.dp)
+                    .background(Color.White)
+            )
+            Text(
+                text = "{}님환영합니다.",
+                modifier = Modifier
+                    .size(40.dp)
+                    .padding(top = 20.dp)
+                    .wrapContentSize(Alignment.Center)
+            )
+            Text(
+                text = "현재 활동중인 친구 {}명",
+                modifier = Modifier
+                    .size(40.dp)
+                    .padding(top = 40.dp)
+                    .wrapContentSize(Alignment.Center)
+            )
+        }
+    }
