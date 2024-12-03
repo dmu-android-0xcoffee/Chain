@@ -2,14 +2,24 @@ package net.wh64.chain.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.font.*
 import androidx.compose.ui.unit.sp
+import net.wh64.chain.R
+
+val pretendard = FontFamily(
+    Font(R.font.pretendard, FontWeight.ExtraLight),
+    Font(R.font.pretendard, FontWeight.Light),
+    Font(R.font.pretendard, FontWeight.Normal),
+    Font(R.font.pretendard, FontWeight.Normal, FontStyle.Italic),
+    Font(R.font.pretendard, FontWeight.Medium),
+    Font(R.font.pretendard, FontWeight.Bold),
+    Font(R.font.pretendard, FontWeight.ExtraBold),
+)
 
 // Set of Material typography styles to start with
 val Typography = Typography(
     bodyLarge = TextStyle(
-        fontFamily = FontFamily.Default,
+        fontFamily = pretendard,
         fontWeight = FontWeight.Normal,
         fontSize = 16.sp,
         lineHeight = 24.sp,

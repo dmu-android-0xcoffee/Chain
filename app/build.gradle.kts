@@ -1,5 +1,7 @@
 plugins {
+    alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.android.application)
+    alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.android)
 }
 
@@ -9,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "net.wh64.chain"
-        minSdk = 24
+        minSdk = 31
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -57,6 +59,10 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.okhttp)
+    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.ktor.client.okhttp.jvm)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
