@@ -9,11 +9,13 @@ import androidx.compose.ui.Modifier
 fun CustomButton(
 	onClick: () -> Unit,
 	modifier: Modifier = Modifier,
+	disabled: Boolean = false,
 	content: @Composable RowScope.() -> Unit
 ) {
 	Button(
 		onClick = onClick,
 		modifier = modifier,
+		enabled = !disabled,
 		content = content
 	)
 }

@@ -18,5 +18,6 @@ val Offline = Color(0xFF666666)
 val Idle = Color(0xFFF0F03C)
 val DoNotDisturb = Color(0xFF5F5F)
 
-val background = Color(0xFF555555)
-val foreground = Color(0xFFF0F0F0)
+val Background = Color(0xFF555555)
+val Background2 = Color(0xFF333333)
+val Foreground = Color(0xFFF0F0F0)

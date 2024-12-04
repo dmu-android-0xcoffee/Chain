@@ -29,11 +29,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
     buildFeatures {
         compose = true
@@ -62,6 +62,10 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.ktor.client.content.negotiation)
     implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.naver.map.sdk)
+    implementation(libs.naver.map.compose)
+    implementation(libs.naver.map.location)
+    implementation(libs.play.services.location)
     implementation(libs.ktor.client.okhttp.jvm)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

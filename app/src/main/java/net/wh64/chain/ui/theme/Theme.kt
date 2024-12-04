@@ -8,13 +8,13 @@ private val DefaultColorScheme = darkColorScheme(
     primary = Palette1,
     secondary = Palette2,
     tertiary = RootPalette,
-    background = background,
-    surface = background,
-    onBackground = foreground,
-    onSurface = foreground,
-    onPrimary = foreground,
-    onSecondary = foreground,
-    onTertiary = foreground,
+    background = Background,
+    surface = Background,
+    onBackground = Foreground,
+    onSurface = Foreground,
+    onPrimary = Foreground,
+    onSecondary = Foreground,
+    onTertiary = Foreground,
 )
 
 @Composable

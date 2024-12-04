@@ -1,5 +1,5 @@
 [versions]
-agp = "8.6.1"
+agp = "8.6.0-alpha07"
 coreSplashscreen = "1.0.1"
 kotlin = "2.0.0"
 coreKtx = "1.15.0"
@@ -12,6 +12,10 @@ activityCompose = "1.9.3"
 composeBom = "2024.11.00"
 ktor = "3.0.1"
 kotlinx-serialization = "2.1.0"
+naver = "3.20.0"
+naver-map-compose = "1.8.0"
+naver-map-location = "21.0.2"
+playServicesLocation = "21.3.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -34,6 +38,10 @@ ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "kto
 ktor-client-okhttp-jvm = { module = "io.ktor:ktor-client-okhttp-jvm", version.ref = "ktorClientOkhttpJvm" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+naver-map-sdk = { module = "com.naver.maps:map-sdk", version.ref = "naver" }
+naver-map-compose = { module = "io.github.fornewid:naver-map-compose", version.ref = "naver-map-compose" }
+naver-map-location = { module = "io.github.fornewid:naver-map-location", version.ref = "naver-map-location" }
+play-services-location = { module = "com.google.android.gms:play-services-location", version.ref = "playServicesLocation" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
