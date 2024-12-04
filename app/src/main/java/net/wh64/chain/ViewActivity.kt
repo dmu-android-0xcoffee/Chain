@@ -1,13 +1,20 @@
 package net.wh64.chain
 
+import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.addCallback
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -54,5 +61,27 @@ fun View(
 		bottomBar = {},
 		modifier = modifier,
 	) { innerPadding ->
+		Home(ctx, Modifier.padding(innerPadding))
 	}
+}
+
+@Composable
+fun Home(ctx: Context, modifier: Modifier = Modifier) {
+	Column(modifier = modifier.fillMaxSize()) {
+		Button(onClick = {
+			logout(ctx)
+		}) {
+			Text("Logout")
+		}
+	}
+}
+
+fun logout(ctx: Context) {
+	val sp = ctx.getSharedPreferences("login", Activity.MODE_PRIVATE)
+	with(sp.edit()) {
+		remove("token")
+		commit()
+	}
+
+	ctx.startActivity(Intent(ctx, LoginActivity::class.java))
 }

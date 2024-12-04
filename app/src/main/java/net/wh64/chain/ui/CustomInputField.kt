@@ -6,6 +6,7 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -26,6 +27,8 @@ fun CustomInputField(
 	state: MutableState<String>,
 	modifier: Modifier = Modifier
 ) {
+//	val show = remember { mutableStateOf(false) }
+
 	OutlinedTextField(
 		singleLine = true,
 		value = state.value,

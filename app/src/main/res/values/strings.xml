@@ -1,4 +1,4 @@
 <resources>
 	<string name="app_name">Chain</string>
-	<string name="api_url">http://192.168.0.2:8080</string>
+	<string name="api_url">https://chain-backend.wh64.net</string>
 </resources>
