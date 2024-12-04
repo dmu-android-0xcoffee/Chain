@@ -24,25 +24,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.animation.doOnEnd
-import androidx.core.content.ContextCompat.startActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import io.ktor.client.call.*
-import io.ktor.client.request.*
-import io.ktor.http.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
-import kotlinx.serialization.Serializable
 import net.wh64.chain.ui.CustomButton
 import net.wh64.chain.ui.CustomInputField
 import net.wh64.chain.ui.CustomSecretInputBtn
 import net.wh64.chain.ui.theme.ChainTheme
-import net.wh64.chain.util.LoginForm
-import net.wh64.chain.util.RegisterForm
-import net.wh64.chain.util.UserController
-import net.wh64.chain.util.client
+import net.wh64.chain.controller.LoginForm
+import net.wh64.chain.controller.RegisterForm
+import net.wh64.chain.controller.UserController
 
 class LoginActivity : ComponentActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {

@@ -20,7 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import net.wh64.chain.ui.CustomTopBar
 import net.wh64.chain.ui.theme.ChainTheme
-import net.wh64.chain.util.UserController
+import net.wh64.chain.controller.UserController
 
 class ViewActivity : ComponentActivity() {
 	private var backPressedTime: Long = 0

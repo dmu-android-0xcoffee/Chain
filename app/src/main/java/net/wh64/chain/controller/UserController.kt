@@ -1,4 +1,4 @@
-package net.wh64.chain.util
+package net.wh64.chain.controller
 
 import android.content.Context
 import android.widget.Toast
@@ -8,6 +8,7 @@ import io.ktor.http.*
 import kotlinx.serialization.Serializable
 import net.wh64.chain.R
 import net.wh64.chain.data.UserStatus
+import net.wh64.chain.util.client
 
 @Serializable
 data class LoginForm(

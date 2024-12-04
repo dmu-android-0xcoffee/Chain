@@ -14,7 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.runBlocking
-import net.wh64.chain.util.UserController
+import net.wh64.chain.controller.UserController
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
