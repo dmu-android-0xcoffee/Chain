@@ -18,7 +18,7 @@ data class ChainUser(
 class UserController(private val token: String, private val ctx: Context) {
 	suspend fun getMe(): ChainUser? {
 		val res = client.get(
-			"${ctx.resources.getString(R.string.api_url)}/api/users/info/@me"
+			"${ctx.resources.getString(R.string.api_url)}/auth/me"
 		) {
 			header("Authorization", "Basic $token")
 		}
