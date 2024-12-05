@@ -8,6 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarColors
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
@@ -18,7 +19,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.runBlocking
 import net.wh64.chain.controller.UserController
-import net.wh64.chain.ui.theme.Foreground
+import net.wh64.chain.data.UserStatus
+import net.wh64.chain.ui.theme.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -42,7 +44,20 @@ fun CustomTopBar(controller: UserController) {
 				Column(
 					verticalArrangement = Arrangement.SpaceBetween,
 				) {
-					Text(str, fontWeight = FontWeight.Bold)
+					Row(verticalAlignment = Alignment.CenterVertically) {
+						Box(modifier = Modifier.size(10.dp).clip(CircleShape)
+							.background(
+								color = when (runBlocking { controller.getMe()!!.status }) {
+									UserStatus.ONLINE -> Online
+									UserStatus.IDLE -> Idle
+									UserStatus.OFFLINE -> Offline
+									UserStatus.DO_NOT_DISTURB -> DoNotDisturb
+								}
+							)
+						)
+						Spacer(Modifier.width(5.dp))
+						Text(str, fontWeight = FontWeight.Bold)
+					}
 					Text("현재 온라인인 친구: 0명", fontSize = 16.sp)
 				}
 			}
