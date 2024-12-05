@@ -1,7 +1,6 @@
 package net.wh64.chain
 
 import android.animation.ObjectAnimator
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -13,7 +12,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ArrowBack
-import androidx.compose.material.icons.outlined.*
+import androidx.compose.material.icons.outlined.AccountCircle
+import androidx.compose.material.icons.outlined.Add
+import androidx.compose.material.icons.outlined.Create
+import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -30,12 +32,12 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import net.wh64.chain.controller.ActionController
-import net.wh64.chain.ui.CustomButton
-import net.wh64.chain.ui.CustomInputField
-import net.wh64.chain.ui.theme.ChainTheme
 import net.wh64.chain.controller.LoginForm
 import net.wh64.chain.controller.RegisterForm
 import net.wh64.chain.controller.UserController
+import net.wh64.chain.ui.CustomButton
+import net.wh64.chain.ui.CustomInputField
+import net.wh64.chain.ui.theme.ChainTheme
 
 class LoginActivity : ComponentActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {

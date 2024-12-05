@@ -1,7 +1,5 @@
 package net.wh64.chain.ui.page
 
-import android.app.Activity
-import android.content.Context
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon

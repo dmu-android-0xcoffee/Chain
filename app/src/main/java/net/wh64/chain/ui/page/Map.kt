@@ -1,20 +1,20 @@
 package net.wh64.chain.ui.page
 
-import android.util.Log
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.naver.maps.map.CameraPosition
 import com.naver.maps.map.NaverMapSdk
 import com.naver.maps.map.compose.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 import net.wh64.chain.ActivityContainer
 import net.wh64.chain.R
+import net.wh64.chain.controller.LocationData
 
 @OptIn(ExperimentalNaverMapApi::class)
 @Composable
-fun Maps(container: ActivityContainer, modifier: Modifier = Modifier) {
-	val scope = rememberCoroutineScope()
+fun Maps(container: ActivityContainer, scope: CoroutineScope, modifier: Modifier = Modifier) {
 	val cameraPositionState = rememberCameraPositionState {
 		position = CameraPosition.INVALID
 	}
@@ -31,11 +31,16 @@ fun Maps(container: ActivityContainer, modifier: Modifier = Modifier) {
 		uiSettings = MapUiSettings(
 			isLocationButtonEnabled = true,
 		),
-		onLocationChange = { loc ->
-			Log.d("location", loc.toString())
+		onLocationChange = { location ->
+			scope.launch {
+				container.user.saveLocation(LocationData(location.longitude, location.latitude))
+			}
 		},
 		modifier = modifier
 	)
+
+	scope.launch {
+	}
 
 //	Column(modifier = modifier.fillMaxSize().padding(horizontal = 15.dp)) {
 //		// TODO: map view screen
