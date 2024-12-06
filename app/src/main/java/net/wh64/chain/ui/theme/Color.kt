@@ -16,7 +16,7 @@ val Palette5 = Color(0xFF21AEE1)
 val Online = Color(0xFF77DD77)
 val Offline = Color(0xFF666666)
 val Idle = Color(0xFFF0F03C)
-val DoNotDisturb = Color(0xFF5F5F)
+val DoNotDisturb = Color(0xFFFF5F5F)
 
 val Background = Color(0xFF555555)
 val Background2 = Color(0xFF333333)

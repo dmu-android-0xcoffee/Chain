@@ -1,5 +1,7 @@
 package net.wh64.chain.ui
 
+import androidx.compose.foundation.border
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
@@ -13,6 +15,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.unit.dp
 import net.wh64.chain.R
 
 @Composable
@@ -52,10 +55,31 @@ fun CustomInputField(
 				}
 			}
 		},
+		shape = RoundedCornerShape(30.dp),
 		onValueChange = {
 			state.value = it
 			isError.value = false
 		},
 		modifier = modifier
+	)
+}
+
+@Composable
+fun CustomInputField(
+	placeholder: String,
+	secret: Boolean = false,
+	icon: Painter? = null,
+	state: MutableState<String>,
+	modifier: Modifier = Modifier
+) {
+	val isError = remember { mutableStateOf(false) }
+
+	CustomInputField(
+		placeholder,
+		secret,
+		icon,
+		isError,
+		state,
+		modifier
 	)
 }

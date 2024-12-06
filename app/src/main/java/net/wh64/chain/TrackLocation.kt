@@ -13,6 +13,7 @@ import com.google.android.gms.location.LocationResult
 import com.google.android.gms.location.Priority
 import kotlinx.coroutines.launch
 import net.wh64.chain.controller.LocationData
+import net.wh64.chain.data.UserStatus
 
 @Composable
 fun RequestLocationPermission(
@@ -50,7 +51,9 @@ fun TrackLocation(container: ActivityContainer, fusedLocationClient: FusedLocati
 			override fun onLocationResult(locationResult: LocationResult) {
 				locationResult.locations.lastOrNull()?.let { location ->
 					scope.launch {
-						container.user.saveLocation(LocationData(location.longitude, location.latitude))
+						val me = container.user.getMe() ?: return@launch
+						if (me.status == UserStatus.ONLINE || me.status == UserStatus.IDLE)
+							container.user.saveLocation(LocationData(location.longitude, location.latitude))
 					}
 				}
 			}

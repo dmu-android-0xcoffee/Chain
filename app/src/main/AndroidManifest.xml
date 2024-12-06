@@ -43,6 +43,16 @@
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 		</activity>
+		<activity
+				android:name=".ChatActivity"
+				android:exported="true"
+				android:label="@string/app_name"
+				android:theme="@style/Theme.Chain">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
 <!--		<activity android:name=".SecondActivty"-->
 <!--				  android:exported="true"-->
 <!--				  android:label="register"-->

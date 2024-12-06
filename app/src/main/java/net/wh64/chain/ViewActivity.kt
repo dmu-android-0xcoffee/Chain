@@ -33,12 +33,10 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import net.wh64.chain.controller.ActionController
-import net.wh64.chain.controller.LocationData
 import net.wh64.chain.controller.UserController
 import net.wh64.chain.data.PageState
 import net.wh64.chain.ui.CustomNavbar
 import net.wh64.chain.ui.CustomTopBar
-import net.wh64.chain.ui.page.Chat
 import net.wh64.chain.ui.page.Home
 import net.wh64.chain.ui.page.Maps
 import net.wh64.chain.ui.page.Setting
@@ -121,7 +119,6 @@ fun View(
 				when (state.value) {
 					PageState.HOME -> Home(container, states, Modifier.padding(innerPadding))
 					PageState.MAP -> Maps(container, scope, target.value, Modifier.padding(innerPadding))
-					PageState.CHAT -> Chat(container, Modifier.padding(innerPadding))
 					PageState.SETTINGS -> Setting(container, Modifier.padding(innerPadding))
 				}
 			}

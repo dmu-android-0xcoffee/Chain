@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.outlined.ArrowBack
@@ -134,6 +135,14 @@ fun LoginView(action: ActionController, modifier: Modifier = Modifier) {
 			horizontalAlignment = Alignment.CenterHorizontally,
 			modifier = Modifier.fillMaxWidth().padding(horizontal = 32.dp),
 		) {
+			Spacer(Modifier.height(32.dp))
+			Image(
+				painterResource(R.drawable.chain_logo),
+				null,
+				Modifier.size(200.dp)
+			)
+			Spacer(Modifier.height(32.dp))
+
 			IsRegister {
 				CustomInputField(
 					icon = rememberVectorPainter(Icons.Outlined.AccountCircle),

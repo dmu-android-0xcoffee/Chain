@@ -1,12 +1,15 @@
 package net.wh64.chain.ui.page
 
+import android.content.Intent
 import android.widget.Toast
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material3.*
@@ -20,12 +23,14 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.zIndex
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import net.wh64.chain.ActivityContainer
+import net.wh64.chain.ChatActivity
 import net.wh64.chain.R
 import net.wh64.chain.StateProvider
+import net.wh64.chain.controller.ChainChannelData
 import net.wh64.chain.data.ChainUser
 import net.wh64.chain.data.FriendRef
 import net.wh64.chain.data.PageState
@@ -47,6 +52,7 @@ fun Home(container: ActivityContainer, states: StateProvider, modifier: Modifier
 		) {
 			OutlinedTextField(
 				value = search.value,
+				shape = RoundedCornerShape(100.dp),
 				onValueChange = { search.value = it },
 				singleLine = true,
 				leadingIcon = {
@@ -79,23 +85,33 @@ fun Home(container: ActivityContainer, states: StateProvider, modifier: Modifier
 
 @Composable
 fun FriendList(container: ActivityContainer, states: StateProvider) {
+	val me = remember { mutableStateOf<ChainUser?>(null) }
 	val users = remember { mutableStateOf<List<FriendRef>>(emptyList()) }
 	val scope = rememberCoroutineScope()
 
 	scope.launch {
-		users.value = container.user.getFriends().friends
+		while (true) {
+			if (me.value == null) {
+				me.value = container.user.getMe()
+			}
+
+			users.value = container.user.getFriends().friends
+			delay(500)
+		}
 	}
 
 	Spacer(Modifier.height(15.dp))
 	LazyColumn {
 		itemsIndexed(users.value) { _, user ->
-			Friend(container, states, user.data, user.accept)
+			Friend(container, states, me.value!!, user.data, user.accept)
 		}
 	}
 }
 
 @Composable
-fun Friend(container: ActivityContainer, states: StateProvider, user: ChainUser, accept: Boolean) {
+fun Friend(container: ActivityContainer, states: StateProvider, me: ChainUser, user: ChainUser, accept: Boolean) {
+	val scope = rememberCoroutineScope()
+
 	Row(
 		verticalAlignment = Alignment.CenterVertically,
 		horizontalArrangement = Arrangement.SpaceBetween,
@@ -114,8 +130,14 @@ fun Friend(container: ActivityContainer, states: StateProvider, user: ChainUser,
 			Box(
 				modifier = Modifier.size(50.dp)
 					.clip(CircleShape)
-					.background(color = Color.Blue)
-			)
+					.background(color = Color.White)
+			) {
+				Image(
+					painterResource(R.drawable.default_user),
+					null,
+					Modifier.size(50.dp)
+				)
+			}
 			Spacer(Modifier.width(10.dp))
 
 			Row(
@@ -136,7 +158,31 @@ fun Friend(container: ActivityContainer, states: StateProvider, user: ChainUser,
 
 		Row {
 			IconButton(
-				onClick = {},
+				onClick = {
+					scope.launch {
+						var chan = container.user.getChannel(user.username)
+						if (chan == null) {
+							val done = container.user.createChannel(user.username)
+							if (!done) {
+								Toast.makeText(container.ctx, "unknown error", Toast.LENGTH_LONG).show()
+								return@launch
+							}
+
+							chan = container.user.getChannel(user.username)
+							Toast.makeText(container.ctx, "entering channel: ${chan?.id}", Toast.LENGTH_LONG)
+								.show()
+						}
+
+						with(Intent(container.ctx, ChatActivity::class.java)) {
+							putExtra("token", container.user.token)
+							putExtra("title_name", user.name)
+							putExtra("target", user.username)
+							putExtra("channel", chan?.id)
+
+							container.ctx.startActivity(this)
+						}
+					}
+				},
 				modifier = Modifier.scale(1.2f)
 			) {
 				Icon(

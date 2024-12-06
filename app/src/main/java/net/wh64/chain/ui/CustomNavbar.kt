@@ -26,12 +26,12 @@ import net.wh64.chain.ui.theme.Palette1
 fun CustomNavbar(state: MutableState<PageState>) {
 	Column(
 		horizontalAlignment = Alignment.CenterHorizontally,
-		modifier = Modifier.fillMaxWidth().height(85.dp).background(Background2)
+		modifier = Modifier.fillMaxWidth().height(90.dp).background(Background2)
 	) {
 		Row(
-			verticalAlignment = Alignment.CenterVertically,
+			verticalAlignment = Alignment.Top,
 			horizontalArrangement = Arrangement.SpaceBetween,
-			modifier = Modifier.fillMaxWidth().padding(horizontal = 26.dp, vertical = 10.dp)
+			modifier = Modifier.fillMaxWidth().padding(horizontal = 55.dp, vertical = 10.dp)
 		) {
 			@Composable
 			fun NavItem(target: PageState, icon: ImageVector) {
@@ -45,22 +45,11 @@ fun CustomNavbar(state: MutableState<PageState>) {
 				}
 			}
 
-			@Composable
-			fun NavItem(target: PageState, icon: Painter) {
-				IconButton(onClick = { state.value = target }) {
-					Icon(
-						icon,
-						contentDescription = null,
-						tint = if (state.value == target) Palette1 else Foreground,
-						modifier = Modifier.size(30.dp)
-					)
-				}
-			}
-
 			NavItem(target = PageState.HOME, icon = Icons.Default.Home)
 			NavItem(target = PageState.MAP, icon = Icons.Default.LocationOn)
-			NavItem(target = PageState.CHAT, icon = painterResource(R.drawable.chat_24px))
 			NavItem(target = PageState.SETTINGS, icon = Icons.Default.Settings)
 		}
+
+		Spacer(Modifier.height(50.dp))
 	}
 }
